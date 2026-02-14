@@ -1,0 +1,34 @@
+{
+  "token_intelligence": {
+    "apis": {
+      "dexscreener_url": "https://api.dexscreener.com/latest",
+      "goplus_url": "https://api.gopluslabs.io/api/v1"
+    },
+    "chain_mapping": {
+      "ethereum": "1",
+      "bsc": "56",
+      "polygon": "137",
+      "arbitrum": "42161",
+      "optimism": "10",
+      "base": "8453",
+      "avalanche": "43114"
+    },
+    "thresholds": {
+      "min_liquidity_usd": 10000,
+      "min_holder_count": 100,
+      "max_tax_pct": 10,
+      "max_owner_balance_pct": 50,
+      "suspicious_creation_days": 7
+    },
+    "classification": {
+      "safe": {"max_score": 25},
+      "risky": {"min_score": 26, "max_score": 60},
+      "danger": {"min_score": 61}
+    },
+    "weights": {
+      "security": 0.40,
+      "market": 0.35,
+      "sentiment": 0.25
+    }
+  }
+}

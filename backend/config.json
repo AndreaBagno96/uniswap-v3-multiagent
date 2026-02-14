@@ -1,0 +1,16 @@
+{
+  "backend": {
+    "host": "0.0.0.0",
+    "port": 5000,
+    "debug": false
+  },
+  "remote_agent_addresses": {
+    "pool_risk": "http://localhost:8001/a2a/",
+    "token_intelligence": "http://localhost:8003/a2a/"
+  },
+  "orchestration": {
+    "timeout": 120,
+    "max_retries": 3,
+    "retry_delay": 2
+  }
+}

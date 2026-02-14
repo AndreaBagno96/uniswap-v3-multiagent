@@ -1,0 +1,77 @@
+{
+  "api": {
+    "base_url": "https://gateway.thegraph.com/api",
+    "subgraph_id": "5zvR82QoaXYFyDEKLZ9t6v9adgnptxYpKpSbxtgVENFV",
+    "fallback_endpoint": "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3",
+    "timeout_seconds": 10
+  },
+  "pagination": {
+    "batch_size": 1000,
+    "rate_limit_delay_seconds": 0.15,
+    "max_retries": 3,
+    "retry_delay_seconds": 1.0
+  },
+  "cache": {
+    "enabled": true,
+    "directory": ".cache",
+    "static_data_ttl_seconds": 3600,
+    "cache_entities": {
+      "ticks": true,
+      "poolDayData": true,
+      "positions": false,
+      "swaps": false
+    }
+  },
+  "queries": {
+    "swap_limit": 2000,
+    "pool_day_data_days": 30,
+    "lp_age_thresholds_days": {
+      "mercenary": 7,
+      "long_term": 30
+    }
+  },
+  "risk_thresholds": {
+    "concentration": {
+      "top10_dominance_high_risk_pct": 50,
+      "top10_dominance_critical_pct": 70,
+      "gini_high_risk": 0.7,
+      "gini_critical": 0.85,
+      "hhi_high_risk": 2500,
+      "hhi_critical": 5000
+    },
+    "liquidity_depth": {
+      "price_impact_100k_high_pct": 1.0,
+      "price_impact_100k_critical_pct": 3.0,
+      "price_impact_1m_high_pct": 5.0,
+      "price_impact_1m_critical_pct": 10.0,
+      "active_liquidity_low_pct": 30,
+      "tvl_volatility_high_pct": 20
+    },
+    "market_risk": {
+      "utilization_rate_low": 0.05,
+      "utilization_rate_critical_low": 0.01,
+      "price_correlation_low_il_risk": 0.3,
+      "price_correlation_high_il_risk": -0.3
+    },
+    "behavioral": {
+      "wash_trading_high_pct": 5,
+      "wash_trading_critical_pct": 15,
+      "mev_exposure_high_pct": 10,
+      "mev_exposure_critical_pct": 25
+    }
+  },
+  "scoring": {
+    "weights": {
+      "concentration": 0.25,
+      "liquidity_depth": 0.30,
+      "market_risk": 0.25,
+      "behavioral": 0.20
+    },
+    "risk_levels": {
+      "low": {"min": 0, "max": 25},
+      "medium": {"min": 26, "max": 50},
+      "high": {"min": 51, "max": 75},
+      "critical": {"min": 76, "max": 100}
+    }
+  }
+}
